@@ -1,63 +1,65 @@
 # Ajit's Gravitation Studio 🪐
-Welcome to the interactive **Planetary Kinematics Simulation Laboratory**! This module is an educational physics app designed to visually demonstrate how varying gravitational field constants ($g$) dramatically alter uniform acceleration, projectile displacements, and airborne flight durations.
 
-Instead of looking at abstract formulas on a whiteboard, this app bridges biomechanical metrics with physical constraints to let students observe real-time kinematics loops across different celestial environments.
+An interactive planetary gravity simulation built with Streamlit. This app helps students and visitors explore how jump height and airtime change under different gravitational forces on different planets.
 
----
+The simulation shows a boy jumping on a planet surface while comparing the gravity value, jump target, and air time for each world.
 
-## 🔬 Core Physics & Kinematic Equations
+## What the app does
 
-The core system behind **Ajit's Gravitation Studio** acts strictly on the laws of classical mechanics and uniform acceleration vectors ($v = v_0 + at$). 
+- Lets you choose a planet such as Earth, Moon, Mars, Pluto, Jupiter, and Giant Planet
+- Displays gravity and jump-height data for the selected planet
+- Draws a simple animated boy character and jump scene on a canvas
+- Shows the target object for each planet (bar, hoop, house, tower, stool, or block)
+- Updates airtime based on gravitational acceleration
+- Works on desktop and mobile browsers through a public Streamlit link
 
-### 1. Constant Muscular Work Input Theory
-A common misconception is that a human's jump height is purely inversely proportional to gravity ($h \propto 1/g$). However, in a real physical workspace, a person's muscular energy limits are bound by a fixed mechanical work threshold ($W$). 
+## Features
 
-The human legs exert force over a short push phase ($d \approx 0.3 \text{ m}$ or $1 \text{ foot}$) to launch the torso. By applying the **Work-Energy Theorem**:
-$$\text{Work Done By Legs } (W) = m \cdot g_{\text{planet}} \cdot h_{\text{jump}}$$
+- Planet comparison interface
+- Physics-based jump animation
+- Real-time airtime clock
+- Visual target markers for each world
+- Responsive layout for browser use on different screen sizes
 
-Because the human body’s chemical energy capacity remains constant regardless of the planet it stands on, the maximum height reached above the floor adjusts seamlessly according to the baseline gravitational load.
+## Project overview
 
-### 2. Time Symmetry Matrix (Ascent = Descent)
-Using the kinematic position vector layout ($y = v_0t + \frac{1}{2}at^2$), when an object reaches its absolute peak displacement ($h$), its instantaneous final velocity drops to exactly $0 \text{ m/s}$. 
+This project was designed to make gravity concepts visual and intuitive. Instead of reading equations alone, users can see how changing gravity makes the same jump behavior look very different in different environments.
 
-$$\text{Time of Ascent } (t_{\text{up}}) = \sqrt{\frac{2h}{g}}$$
+## Run locally
 
-Because air resistance parameters are omitted in this closed vacuum laboratory space, the structural deceleration match forces the **Time of Ascent to perfectly equal the Time of Descent**. The total flight time ($T$) displayed on the digital chronometer reads:
-$$T = 2 \times \sqrt{\frac{2h}{g}}$$
-
----
-
-## 🎨 Interactive Visual Indicators
-
-* **Unified Dimensional Scaling:** To preserve absolute visual accuracy, the environment uses a rigid pixel constraint layout where **1 Foot = 15 Pixels**. This places the Earth 3-foot track crossbar directly at the boy's chest level rather than floating unreachably high.
-* **Vibrant Velocity Vectors:** A live vector arrow is mapped directly next to the character's core mass.
-  * **🟢 Green Arrow (Going Up):** Shows a strong initial impulse launch velocity that gradually decelerates against the planet's gravity.
-  * **⚪ White Flash Point (At Peak):** Visualizes the exact millisecond instantaneous velocity hits $0 \text{ m/s}$ at the top of the roof line.
-  * **🔴 Red Arrow (Going Down):** Flips downward and expands dynamically as gravitational pulling acceleration increases his speed.
-
----
-
-## 📊 Planetary Reference Dataset
-
-| Celestial Body | Relative Gravity | Value of $g$ | Target Jump Height | Theoretical Air Time |
-| :--- | :--- | :--- | :--- | :--- |
-| **Earth (Baseline)** | $1 \ g$ | $9.80 \text{ m/s}^2$ | **3.00 ft** ($0.91\text{ m}$) | **0.864 seconds** |
-| **Mars** | $g \ / \ 2.6$ | $3.71 \text{ m/s}^2$ | **8.00 ft** ($2.44\text{ m}$) | **1.621 seconds** |
-| **Moon** | $g \ / \ 6$ | $1.63 \text{ m/s}^2$ | **18.40 ft** ($5.61\text{ m}$) | **2.624 seconds** |
-| **Pluto** | $g \ / \ 16$ | $0.61 \text{ m/s}^2$ | **48.00 ft** ($14.63\text{ m}$) | **6.923 seconds** |
-| **Jupiter** | $2.5 \ g$ | $24.80 \text{ m/s}^2$ | **1.20 ft** ($0.37\text{ m}$) | **0.243 seconds** |
-| **Giant Planet** | $10 \ g$ | $98.00 \text{ m/s}^2$ | **0.05 ft** ($0.015\text{ m}$) | **0.025 seconds** |
-
----
-
-## 🛠️ Local Environment Deployment Guide
-
-To run this laboratory simulation on your own computer workstation, make sure Python is installed and run these terminal prompts inside VS Code:
+Make sure you have Python installed, then run:
 
 ```bash
-# 1. Install required framework dependencies
-pip install -r requirements.txt
-
-# 2. Run the kinematic web app pipeline
+pip install streamlit
 streamlit run studio.py
 ```
+
+## Deploy to Streamlit Cloud
+
+1. Push this repository to GitHub.
+2. Open Streamlit Cloud.
+3. Create a new app.
+4. Choose the repository and branch.
+5. Set the main file to `studio.py`.
+6. Deploy.
+
+After deployment, the app will be available through a public URL that can be opened on desktop or mobile browsers.
+
+## Supported planets
+
+- Earth (Baseline)
+- Moon
+- Mars
+- Pluto
+- Jupiter
+- Giant Planet
+
+## Notes
+
+- The app is intended as a visual educational tool.
+- It is designed for quick experimentation and demonstration of gravity-based jump behavior.
+- The public deployment should be tested on both desktop and mobile to confirm the canvas and touch interaction are working correctly.
+
+## License
+
+This project is for educational and demonstration purposes.
