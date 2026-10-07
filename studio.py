@@ -71,7 +71,7 @@ game_html = f"""
   // Responsive canvas sizing
   const canvas = document.getElementById('studioCanvas');
   const button = document.getElementById('jumpButton');
-  const ctx = canvas.getContext('2d');
+  let ctx = null;
   
   // Make canvas responsive
   function resizeCanvas() {{
@@ -82,6 +82,7 @@ game_html = f"""
     
     canvas.width = width;
     canvas.height = height;
+    ctx = canvas.getContext('2d');
   }}
   
   resizeCanvas();
