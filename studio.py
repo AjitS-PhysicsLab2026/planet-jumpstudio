@@ -63,7 +63,7 @@ game_html = f"""
 
   <canvas id="studioCanvas"
     style="background:#0f172a; border-radius:14px; max-width:100%; 
-           width:100%; height:auto; border:3px solid #fff; display:block; margin:0 auto;">
+           width:100%; height:500px; border:3px solid #fff; display:block; margin:0 auto;">
   </canvas>
 </div>
 
@@ -75,13 +75,15 @@ game_html = f"""
   
   // Make canvas responsive
   function resizeCanvas() {{
-    const container = canvas.parentElement;
-    const maxWidth = Math.min(window.innerWidth - 40, 380);
-    const width = maxWidth;
-    const height = Math.round(width * 1.84);
+    const containerWidth = Math.min(window.innerWidth - 40, 380);
+    const aspectRatio = 1.84;
     
-    canvas.width = width;
-    canvas.height = height;
+    canvas.width = containerWidth;
+    canvas.height = Math.round(containerWidth * aspectRatio);
+    
+    // Also update CSS height to match for proper display
+    canvas.style.height = canvas.height + 'px';
+    
     ctx = canvas.getContext('2d');
   }}
   
