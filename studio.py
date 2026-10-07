@@ -62,31 +62,42 @@ game_html = f"""
   </div>
 
   <canvas id="studioCanvas"
+    width="380" height="700"
     style="background:#0f172a; border-radius:14px; max-width:100%; 
-           width:100%; height:500px; border:3px solid #fff; display:block; margin:0 auto;">
+           width:100%; height:auto; border:3px solid #fff; display:block; margin:0 auto;">
   </canvas>
 </div>
 
 <script>
-  // Responsive canvas sizing
+  // Get canvas element
   const canvas = document.getElementById('studioCanvas');
   const button = document.getElementById('jumpButton');
-  let ctx = null;
+  
+  if (!canvas) {{
+    console.error('Canvas not found');
+  }}
+  
+  let ctx = canvas.getContext('2d');
+  if (!ctx) {{
+    console.error('Failed to get canvas context');
+  }}
   
   // Make canvas responsive
   function resizeCanvas() {{
     const containerWidth = Math.min(window.innerWidth - 40, 380);
     const aspectRatio = 1.84;
+    const calculatedHeight = Math.round(containerWidth * aspectRatio);
     
     canvas.width = containerWidth;
-    canvas.height = Math.round(containerWidth * aspectRatio);
+    canvas.height = calculatedHeight;
     
-    // Also update CSS height to match for proper display
-    canvas.style.height = canvas.height + 'px';
-    
-    ctx = canvas.getContext('2d');
+    // Redraw after resize
+    if (typeof drawScene === 'function') {{
+      drawScene();
+    }}
   }}
   
+  // Initial resize
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
@@ -99,6 +110,7 @@ game_html = f"""
   const targetHeight = planet.px;
   const launchVelocity = -Math.sqrt(2 * gravity * targetHeight);
 
+  // Initialize state AFTER canvas dimensions are known
   const state = {{
     boyY: groundY,
     boyVy: 0,
@@ -436,6 +448,7 @@ game_html = f"""
   }}, false);
   button.addEventListener('click', executeJumpTrigger);
 
+  // Start animation loop AFTER all setup is complete
   requestAnimationFrame(tick);
 </script>
 """
